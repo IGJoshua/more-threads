@@ -3,6 +3,7 @@ All notable changes to this project will be documented in this file. This change
 
 ## [Unreleased]
 ### Added
+- `partial->` for constructing partial functions that fill in the first argument of the wrapped function
 - `if->` and `when->`, and paired thread-last versions to complement `cond->`
 - `when-pred`, `if-pred` and `cond-pred` functions for thread pipelines branching on the current value of the expression
 

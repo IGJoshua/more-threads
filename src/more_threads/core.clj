@@ -31,6 +31,21 @@
            ((second %) x))
         (partition 2 clauses)))
 
+(defn partial->
+  "Constructs a function of one argument that calls `f` with it as the first argument and `args` for the remaining arguments.
+
+  This is useful for constructing partial functions for passing to [[swap!]] and
+  other functions, especially when they do not support passing additional
+  arguments to the target function, or when you wish to reuse the function
+  across multiple callsites.
+
+  This function can also be very useful when paired with [[if-pred]] and similar
+  functions to allow the predicate arguments to act as if it were a form in a
+  thread-first body."
+  [f & args]
+  (fn [v]
+    (apply f v args)))
+
 (defmacro when->
   "Threads `x` through `then` as [[->]], but only if `test` is truthy.
 
